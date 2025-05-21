@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Торговый сайт</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    .section-bg {
+      background-color: #1a1a1a;
+    }
+    .btn-custom {
+      background-color: #ffffff;
+      color: #000000;
+    }
+    .btn-custom:hover {
+      background-color: #e0e0e0;
+    }
+    /* Стили для модального окна */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    .modal-content p {
+      margin-bottom: 20px;
+    }
+    .modal-content button {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+    .modal-content button:hover {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body class="font-sans">
+  <div class="container mx-auto p-4">
+    <h1 class="text-4xl font-bold text-center mb-8">Торговый сайт</h1>
+
+    <!-- Сет незеритовой брони -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Сет незеритовой брони</h2>
+      <div class="section-bg p-4 rounded-lg">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+          <div class="text-center">
+            <img src="https://minecraft.wiki/images/thumb/Netherite_Helmet_JE2_BE1.png/64px-Netherite_Helmet_JE2_BE1.png" alt="Незеритовый шлем" class="w-16 h-16 mx-auto">
+            <p>Шлем: Защита 4, Прочность 3, Починка</p>
+          </div>
+          <div class="text-center">
+            <img src="https://minecraft.wiki/images/thumb/Netherite_Chestplate_JE2_BE1.png/64px-Netherite_Chestplate_JE2_BE1.png" alt="Незеритовый нагрудник" class="w-16 h-16 mx-auto">
+            <p>Нагрудник: Защита 4, Прочность 3, Починка</p>
+          </div>
+          <div class="text-center">
+            <img src="https://ru.minecraft.wiki/images/thumb/%D0%9D%D0%B5%D0%B7%D0%B5%D1%80%D0%B8%D1%82%D0%BE%D0%B2%D1%8B%D0%B5_%D0%BF%D0%BE%D0%BD%D0%BE%D0%B6%D0%B8.png/160px-%D0%9D%D0%B5%D0%B7%D0%B5%D1%80%D0%B8%D1%82%D0%BE%D0%B2%D1%8B%D0%B5_%D0%BF%D0%BE%D0%BD%D0%BE%D0%B6%D0%B8.png?db4b5" alt="Незеритовые поножи" class="w-16 h-16 mx-auto">
+            <p>Поножи: Защита 4, Прочность 3, Починка</p>
+          </div>
+          <div class="text-center">
+            <img src="https://minecraft.wiki/images/thumb/Netherite_Boots_JE2_BE1.png/64px-Netherite_Boots_JE2_BE1.png" alt="Незеритовые ботинки" class="w-16 h-16 mx-auto">
+            <p>Ботинки: Защита 4, Прочность 3, Починка</p>
+          </div>
+        </div>
+        <button onclick="showModal()" class="btn-custom font-bold py-2 px-4 rounded">
+          Купить сет
+        </button>
+      </div>
+    </section>
+
+    <!-- Сет алмазной брони -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Сет алмазной брони</h2>
+      <div class="section-bg p-4 rounded-lg">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+          <div class="text-center">
+            <img src="https://minecraft.wiki/images/thumb/Diamond_Helmet_JE2_BE2.png/64px-Diamond_Helmet_JE2_BE2.png" alt="Алмазный шлем" class="w-16 h-16 mx-auto">
+            <p>Шлем: Защита 4, Подводное дыхание 3</p>
+          </div>
+          <div class="text-center">
+            <img src="https://ru.minecraft.wiki/images/thumb/%D0%90%D0%BB%D0%BC%D0%B0%D0%B7%D0%BD%D0%B0%D1%8F_%D0%BA%D0%B8%D1%80%D0%B0%D1%81%D0%B0_JE3_BE2.png/160px-%D0%90%D0%BB%D0%BC%D0%B0%D0%B7%D0%BD%D0%B0%D1%8F_%D0%BA%D0%B8%D1%80%D0%B0%D1%81%D0%B0_JE3_BE2.png?21525" alt="Алмазный нагрудник" class="w-16 h-16 mx-auto">
+            <p>Нагрудник: Защита 3, Шипы 3, Прочность 3</p>
+          </div>
+          <div class="text-center">
+            <img src="https://minecraft.wiki/images/thumb/Diamond_Leggings_JE2_BE2.png/64px-Diamond_Leggings_JE2_BE2.png" alt="Алмазные поножи" class="w-16 h-16 mx-auto">
+            <p>Поножи: Защита 3, Прочность 3</p>
+          </div>
+          <div class="text-center">
+            <img src="https://minecraft.wiki/images/thumb/Diamond_Boots_JE2_BE2.png/64px-Diamond_Boots_JE2_BE2.png" alt="Алмазные ботинки" class="w-16 h-16 mx-auto">
+            <p>Ботинки: Защита 3, Прочность 3</p>
+          </div>
+        </div>
+        <button onclick="showModal()" class="btn-custom font-bold py-2 px-4 rounded">
+          Купить сет
+        </button>
+      </div>
+    </section>
+
+    <!-- Скупка/Продажа руд -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Скупка/Продажа руд</h2>
+      <div class="section-bg p-4 rounded-lg">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+          <div class="text-center">
+            <img src="https://minecraft.wiki/images/thumb/Gold_Ingot_JE4_BE2.png/64px-Gold_Ingot_JE4_BE2.png" alt="Золотой слиток" class="w-16 h-16 mx-auto">
+            <p>Продам золото</p>
+          </div>
+          <div class="text-center">
+            <img src="https://minecraft.wiki/images/thumb/Netherite_Ingot_JE1_BE2.png/64px-Netherite_Ingot_JE1_BE2.png" alt="Незеритовый слиток" class="w-16 h-16 mx-auto">
+            <p>Продам незерит</p>
+          </div>
+          <div class="text-center">
+            <img src="https://minecraft.wiki/images/thumb/Iron_Ingot_JE3_BE2.png/64px-Iron_Ingot_JE3_BE2.png" alt="Железный слиток" class="w-16 h-16 mx-auto">
+            <p>Куплю железо</p>
+          </div>
+        </div>
+        <button onclick="showModal()" class="btn-custom font-bold py-2 px-4 rounded">
+          Связаться
+        </button>
+      </div>
+    </section>
+
+    <!-- Модальное окно -->
+    <div id="contactModal" class="modal">
+      <div class="modal-content">
+        <p class="text-lg">Пишите в Discord: killo1010</p>
+        <button onclick="closeModal()">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showModal() {
+      document.getElementById('contactModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('contactModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
